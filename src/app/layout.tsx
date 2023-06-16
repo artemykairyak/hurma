@@ -3,7 +3,7 @@ import '@styles/normalize.css';
 import { Montserrat_Alternates } from 'next/font/google';
 import { ReactNode } from 'react';
 
-const montserrat = Montserrat_Alternates({
+export const montserrat = Montserrat_Alternates({
   weight: ['400', '500'],
   subsets: ['latin'],
   fallback: ['sans-serif'],

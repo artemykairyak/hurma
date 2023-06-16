@@ -1,0 +1,40 @@
+@import "@styles/vars.module.scss";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.055em;
+  margin-bottom: 11px;
+}
+
+.required {
+
+}
+
+.input {
+  background-color: $gray;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.055em;
+  padding: 10px 15px;
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba($accentFocus, .5);
+  }
+}
+
+.required {
+  color: $accent;
+}
+
+.error {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba($error, .5);
+}

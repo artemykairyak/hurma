@@ -1,0 +1,52 @@
+@import "@styles/vars.module.scss";
+
+.button {
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.055em;
+  height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all .2s;
+
+  &:disabled {
+    background-color: $disabledAccent;
+    pointer-events: none;
+  }
+}
+
+.primaryButton {
+  background-color: $accent;
+
+  &:hover {
+    background-color: $darkAccent;
+
+    .icon {
+      color: $accent;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba($accentFocus, .5);
+    background-color: $darkAccent;
+  }
+}
+
+.secondaryButton {
+  background-color: transparent;
+
+  .icon {
+    color: $accent;
+  }
+
+  &:hover {
+
+    .icon {
+      color: #fff;
+    }
+  }
+}
