@@ -1,0 +1,49 @@
+@import "@styles/vars.module.scss";
+
+.pagination {
+  display: flex;
+  gap: 10px;
+}
+
+.page {
+  background-color: #fff;
+  box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  min-width: 40px;
+  min-height: 40px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.055em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color .2s;
+
+  &:not(.activePage):hover {
+    background-color: darken($gray, 5%);
+  }
+}
+
+.prev, .next {
+  display: none;
+}
+
+.break {
+  width: 80px;
+  pointer-events: none;
+}
+
+.pageLink {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.activePage {
+  background-color: $lightAccent;
+}

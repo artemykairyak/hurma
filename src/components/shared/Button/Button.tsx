@@ -6,8 +6,8 @@ import { ReactSVG } from 'react-svg';
 import s from './styles.module.scss';
 
 interface ButtonProps {
-  children: ReactNode | string;
   type: 'primary' | 'secondary';
+  children?: ReactNode | string;
   loading?: boolean;
   disabled?: boolean;
   onClick?: VoidFunction;

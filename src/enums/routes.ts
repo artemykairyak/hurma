@@ -1,5 +1,5 @@
 export enum Routes {
-  Cabinet = '/cabinet',
+  Links = '/links',
   Statistics = '/statistics',
   About = '/about',
   SignUp = '/sign-up',

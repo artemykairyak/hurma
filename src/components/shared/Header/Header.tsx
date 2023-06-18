@@ -4,7 +4,8 @@ import SmallLogo from '@assets/icons/smallLogo.svg';
 import { Routes } from '@enums/routes';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { ReactSVG } from 'react-svg';
 
 import s from './styles.module.scss';
@@ -12,7 +13,7 @@ import s from './styles.module.scss';
 const links = [
   {
     title: 'links',
-    url: Routes.Cabinet,
+    url: Routes.Links,
   },
   {
     title: 'statistics',
@@ -25,11 +26,12 @@ const links = [
 ];
 
 export const Header = () => {
+  const pathName = usePathname();
   const [activeLink, setActiveLink] = useState('');
 
-  const onLinkClick = (link: string) => () => {
-    setActiveLink(link);
-  };
+  useEffect(() => {
+    setActiveLink(pathName);
+  }, [pathName]);
 
   return (
     <div className={s.header}>
@@ -37,11 +39,10 @@ export const Header = () => {
         if (i < links.length - 1) {
           return (
             <Link
-              onClick={onLinkClick(link.title)}
               key={i}
               href={link.url}
               className={clsx(s.link, {
-                [s.active]: activeLink === link.title,
+                [s.active]: activeLink === link.url,
               })}
             >
               {link.title}
@@ -53,7 +54,6 @@ export const Header = () => {
         <ReactSVG src={SmallLogo.src} className={s.smallLogo} />
       </Link>
       <Link
-        onClick={onLinkClick(links.at(-1).title)}
         href={links.at(-1).url}
         className={clsx(s.link, {
           [s.active]: activeLink === links.at(-1).title,

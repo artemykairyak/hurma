@@ -1,7 +1,10 @@
+@import "@styles/vars.module.scss";
+
 .table {
   display: flex;
   flex-direction: column;
-  width: 960px;
+  width: 100%;
+  height: 100%;
 }
 
 .header {
@@ -9,11 +12,38 @@
   width: 100%;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 .body {
   display: flex;
   flex-direction: column;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  padding-left: 15px;
+  left: -15px;
+  padding-top: 15px;
+  top: -15px;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 5px;
+    background-color: darken($gray, 20%);
+    border-radius: 20px;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: darken($gray, 20%) transparent;
 }
 
 .rowWrapper {
