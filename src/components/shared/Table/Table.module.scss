@@ -1,0 +1,38 @@
+.table {
+  display: flex;
+  flex-direction: column;
+  width: 960px;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.rowWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.additional {
+  position: absolute;
+  transform: translate(100%, -50%);
+  right: -15px;
+  top: 50%;
+}

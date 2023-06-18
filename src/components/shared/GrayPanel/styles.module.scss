@@ -1,0 +1,15 @@
+@import '@styles/vars.module.scss';
+
+.panel {
+  border-radius: 5px;
+  background-color: $gray;
+  padding: 50px 70px;
+  width: 100%;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  margin-bottom: 30px;
+}

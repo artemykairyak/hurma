@@ -1,25 +1,26 @@
 'use client';
 
 import SmallLogo from '@assets/icons/smallLogo.svg';
+import { Routes } from '@enums/routes';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useState } from 'react';
 import { ReactSVG } from 'react-svg';
 
-import s from './header.module.scss';
+import s from './styles.module.scss';
 
 const links = [
   {
-    title: 'cabinet',
-    url: '/cabinet',
+    title: 'links',
+    url: Routes.Cabinet,
   },
   {
     title: 'statistics',
-    url: 'statistics',
+    url: Routes.Statistics,
   },
   {
     title: 'about',
-    url: 'about',
+    url: Routes.About,
   },
 ];
 

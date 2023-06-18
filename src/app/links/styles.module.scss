@@ -1,0 +1,40 @@
+@import '@styles/vars.module.scss';
+
+.layout {
+  display: flex;
+  padding: 40px 50px 80px;
+  height: calc(100% - $headerHeight);
+}
+
+.table {
+}
+
+.header {
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.055em;
+  box-shadow: 4px 0 30px rgba(0, 0, 0, 0.05);
+  background: #E4E4E4;
+  padding: 10px 15px;
+  margin-bottom: 20px;
+}
+
+.headerCeil {
+
+}
+
+.row {
+  background: #fff;
+  box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.copyBtn {
+  margin-bottom: 15px;
+}

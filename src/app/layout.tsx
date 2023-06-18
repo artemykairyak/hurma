@@ -1,12 +1,10 @@
-import s from '@styles/globals.module.scss';
+import { MainLayout } from '@components/layouts/MainLayout/MainLayout';
 import '@styles/normalize.css';
 import { Montserrat_Alternates } from 'next/font/google';
 import { ReactNode } from 'react';
 
-import { Header } from './header';
-
 export const montserrat = Montserrat_Alternates({
-  weight: ['400', '500', '600'],
+  weight: ['400', '500', '600', '700'],
   subsets: ['latin'],
   fallback: ['sans-serif'],
 });
@@ -20,10 +18,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        <div className={s.layout}>
-          <Header />
-          {children}
-        </div>
+        <MainLayout>{children}</MainLayout>
       </body>
     </html>
   );
