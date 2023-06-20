@@ -1,0 +1,17 @@
+.chart {
+  position: relative;
+
+  &:after {
+    content: '';
+    height: 11px;
+    width: 100%;
+    background: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  a {
+    display: none !important;
+  }
+}

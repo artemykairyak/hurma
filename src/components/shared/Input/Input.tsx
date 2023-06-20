@@ -5,7 +5,7 @@ import { FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
 import { montserrat } from '../../../app/layout';
 import s from './styles.module.scss';
 
-interface InputProps {
+export interface InputProps {
   name: string;
   label: string;
   register: UseFormRegister<FieldValues>;
@@ -23,7 +23,7 @@ export const Input: FC<InputProps> = ({
   placeholder,
   required,
   className,
-  type,
+  type = 'text',
   isError,
   validationOptions,
   register,

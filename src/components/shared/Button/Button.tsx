@@ -5,7 +5,7 @@ import { ReactSVG } from 'react-svg';
 
 import s from './styles.module.scss';
 
-interface ButtonProps {
+export interface ButtonProps {
   type: 'primary' | 'secondary';
   children?: ReactNode | string;
   loading?: boolean;

@@ -1,0 +1,27 @@
+@import '@styles/vars.module.scss';
+
+.layout {
+  display: flex;
+  padding: 40px 50px 80px;
+  height:calc(100vh - $headerHeight);
+  overflow: hidden;
+}
+
+.stats {
+  background: #fff;
+  padding: 50px 50px 60px 50px;
+  box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+}
+
+.mode {
+  margin-bottom: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.055em;
+}
+
+.graph {
+  margin-bottom: 50px;
+}
