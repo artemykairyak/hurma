@@ -7,3 +7,7 @@ export interface IInput {
   required?: boolean;
   placeholder?: string;
 }
+
+export interface ModalProps {
+  onClose: VoidFunction;
+}

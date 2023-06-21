@@ -1,6 +1,5 @@
 import { Button, ButtonProps } from '@components/shared/Button/Button';
 import { Input, InputProps } from '@components/shared/Input/Input';
-import { ErrorMessage } from '@hookform/error-message';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -25,18 +24,7 @@ export const InputWithButton: FC<InputWithButton> = ({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
-      <Input
-        {...inputProps}
-        register={register}
-        isError={!!errors[inputProps.name]}
-      />
-
-      <ErrorMessage
-        errors={errors}
-        name={inputProps.name}
-        render={({ message }) => <span className={s.error}>{message}</span>}
-      />
-
+      <Input {...inputProps} register={register} errors={errors} />
       <Button type="primary" icon={buttonProps.icon} {...buttonProps} />
     </form>
   );

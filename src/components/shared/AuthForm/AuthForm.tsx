@@ -7,7 +7,7 @@ import { FC } from 'react';
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { ObjectSchema } from 'yup';
 
-import s from './styles.module.scss';
+import s from './AuthForm.module.scss';
 
 interface AuthFormProps {
   inputs: IInput[];

@@ -1,8 +1,15 @@
+import { montserrat } from '@app/layout';
+import { ErrorMessage } from '@hookform/error-message';
 import clsx from 'clsx';
 import { FC, HTMLInputTypeAttribute } from 'react';
-import { FieldValues, RegisterOptions, UseFormRegister } from 'react-hook-form';
+import {
+  DeepRequired,
+  FieldErrorsImpl,
+  FieldValues,
+  RegisterOptions,
+  UseFormRegister,
+} from 'react-hook-form';
 
-import { montserrat } from '../../../app/layout';
 import s from './styles.module.scss';
 
 export interface InputProps {
@@ -12,7 +19,7 @@ export interface InputProps {
   validationOptions?: RegisterOptions;
   placeholder?: string;
   required?: boolean;
-  isError?: boolean;
+  errors?: Partial<FieldErrorsImpl<DeepRequired<FieldValues>>>;
   className?: string;
   type?: HTMLInputTypeAttribute;
 }
@@ -24,7 +31,7 @@ export const Input: FC<InputProps> = ({
   required,
   className,
   type = 'text',
-  isError,
+  errors,
   validationOptions,
   register,
 }) => {
@@ -38,10 +45,15 @@ export const Input: FC<InputProps> = ({
         id={name}
         type={type}
         className={clsx(s.input, className, montserrat.className, {
-          [s.error]: isError,
+          [s.error]: !!errors ? errors[name] : false,
         })}
         placeholder={placeholder}
         {...register(name, { ...validationOptions })}
+      />
+      <ErrorMessage
+        errors={errors}
+        name={name}
+        render={(data) => <span className={s.errorText}>{data.message}</span>}
       />
     </div>
   );

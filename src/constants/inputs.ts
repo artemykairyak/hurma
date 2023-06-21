@@ -21,14 +21,46 @@ export const signUpInputs: IInput[] = [
 export const signInInputs: IInput[] = [
   {
     name: 'username',
-    placeholder: 'Username',
     type: 'text',
     label: 'username',
   },
   {
     name: 'password',
-    placeholder: 'Password',
     type: 'password',
     label: 'password',
+  },
+];
+
+export const createLinkInputs: IInput[] = [
+  {
+    name: 'title',
+    type: 'text',
+    label: 'title',
+    required: true,
+  },
+  {
+    name: 'url',
+    type: 'text',
+    label: 'URL',
+    required: true,
+  },
+  {
+    name: 'expires',
+    type: 'text',
+    label: 'expires',
+  },
+];
+
+export const editLinkInputs: IInput[] = [
+  {
+    name: 'title',
+    type: 'text',
+    label: 'title',
+    required: true,
+  },
+  {
+    name: 'expires',
+    type: 'text',
+    label: 'expires',
   },
 ];

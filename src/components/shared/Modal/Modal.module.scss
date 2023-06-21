@@ -1,0 +1,52 @@
+@import "@styles/vars.module.scss";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  background-color: rgba(0,0,0,.4);
+}
+
+.transparentOverlay {
+  background-color: transparent;
+}
+
+.modal {
+  background: #fff;
+  box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  padding: 50px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  color: darken($gray, 50%);
+  transition: color .3s;
+
+  &:hover {
+    color: black;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.title {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 39px;
+  margin-bottom: 30px;
+}

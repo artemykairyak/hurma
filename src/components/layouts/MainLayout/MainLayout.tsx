@@ -6,7 +6,7 @@ import '@styles/normalize.css';
 import { usePathname } from 'next/navigation';
 import { FC, ReactNode } from 'react';
 
-import s from './styles.module.scss';
+import s from './MainLayout.module.scss';
 
 const pagesWithoutHeader = [Routes.Login, Routes.SignUp];
 

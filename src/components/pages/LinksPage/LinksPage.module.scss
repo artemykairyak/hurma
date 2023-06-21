@@ -3,22 +3,15 @@
 $paddingTop: 40px;
 $paddingBottom: 80px;
 
-.layout {
-  display: flex;
-  padding: 40px 50px 80px;
-  height:calc(100vh - $headerHeight);
-  overflow: hidden;
-}
-
 .panel {
   padding-bottom: 110px;
 }
 
 .table {
   position: relative;
-  width: 85.5%;
-  height: calc(100% - 63px);
+  width: 100%;
   padding-right: 65px;
+  margin-top: -40px;
 }
 
 .header {
@@ -32,6 +25,8 @@ $paddingBottom: 80px;
   background: #E4E4E4;
   padding: 10px 15px;
   margin-bottom: 20px;
+  position: sticky;
+  top: -40px;
 }
 
 .row {
@@ -69,19 +64,15 @@ $paddingBottom: 80px;
   margin-bottom: 15px;
 }
 
-.addBtnWrapper {
-  position: absolute;
-  top: 0;
-  right: 50px;
-  transform: translateX(100%);
-  z-index: 2;
-}
-
 .addBtn {
+  position: sticky;
+  top: -80px;
+  right: 50px;
+  z-index: 2;
   font-weight: 600;
   font-size: 24px;
-  position: sticky;
-  top: 0;
+  margin-left: 100%;
+  transform: translate(15px, 40px);
 }
 
 .pagination {

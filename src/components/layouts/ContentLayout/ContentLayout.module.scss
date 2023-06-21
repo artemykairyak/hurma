@@ -1,0 +1,29 @@
+@import "@styles/vars.module.scss";
+
+.contentWrapper {
+  height: calc(100vh - $headerHeight);
+  padding: 40px 50px 80px;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 5px;
+    background-color: $gray;
+    border-radius: 20px;
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: $gray transparent;
+}
+
+.content {
+  max-width: 1440px;
+  margin: 0 auto;
+}

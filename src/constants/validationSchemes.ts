@@ -29,3 +29,16 @@ export const signInSchema = yup
       .required(ValidationMessages.REQUIRED),
   })
   .required();
+
+export const createLinkSchema = yup
+  .object({
+    title: yup.string().required(ValidationMessages.REQUIRED),
+    url: yup.string().required(ValidationMessages.REQUIRED),
+  })
+  .required();
+
+export const editLinkSchema = yup
+  .object({
+    title: yup.string().required(ValidationMessages.REQUIRED),
+  })
+  .required();

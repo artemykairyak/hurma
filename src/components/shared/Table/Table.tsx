@@ -1,12 +1,5 @@
 import clsx from 'clsx';
-import {
-  FC,
-  ReactNode,
-  cloneElement,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { FC, ReactNode, cloneElement } from 'react';
 
 import s from './Table.module.scss';
 
@@ -68,26 +61,6 @@ export const Table: FC<TableProps> = ({
   rowComponent,
   loading,
 }) => {
-  const additionalRowRef = useRef<HTMLDivElement | null>(null);
-  const bodyRowRef = useRef<HTMLDivElement | null>(null);
-  const [bodyStyles, setBodyStyles] = useState({ paddingRight: '', width: '' });
-
-  useEffect(() => {
-    if (additionalRowRef.current?.offsetWidth) {
-      const hasScrollbar =
-        bodyRowRef.current?.scrollHeight > bodyRowRef.current?.clientHeight;
-      const scrollbarWidth =
-        bodyRowRef.current?.offsetWidth - bodyRowRef.current?.clientWidth;
-
-      setBodyStyles({
-        paddingRight: `calc(${additionalRowRef.current?.offsetWidth}px + ${scrollbarWidth}px + 30px)`,
-        width: `calc(100% + ${
-          additionalRowRef.current?.offsetWidth
-        }px + 30px + ${hasScrollbar ? 20 + scrollbarWidth + 'px' : '15px'})`,
-      });
-    }
-  }, [additionalRowRef.current]);
-
   const getTableRow = (children: ReactNode, row: TableItem) => {
     return rowComponent ? (
       cloneElement(rowComponent(children, row), {
@@ -116,7 +89,7 @@ export const Table: FC<TableProps> = ({
           );
         })}
       </div>
-      <div className={s.body} style={bodyStyles} ref={bodyRowRef}>
+      <div className={s.body}>
         {data.map((row) => {
           return (
             <div className={s.rowWrapper} key={`row-${row.id}`}>
@@ -140,11 +113,7 @@ export const Table: FC<TableProps> = ({
                 row,
               )}
               {additionalCell && (
-                <div
-                  key="additional"
-                  className={s.additional}
-                  ref={additionalRowRef}
-                >
+                <div key="additional" className={s.additional}>
                   {additionalCell(row)}
                 </div>
               )}
