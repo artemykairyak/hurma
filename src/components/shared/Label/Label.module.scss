@@ -1,0 +1,20 @@
+@import '@styles/vars.module.scss';
+
+.labelWrapper {
+  display: flex;
+}
+
+.label {
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.055em;
+  font-weight: 500;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.required {
+  color: $accent;
+}

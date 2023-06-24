@@ -1,4 +1,5 @@
 import { montserrat } from '@app/layout';
+import { Label } from '@components/shared/Label/Label';
 import { ErrorMessage } from '@hookform/error-message';
 import clsx from 'clsx';
 import { FC, HTMLInputTypeAttribute } from 'react';
@@ -10,7 +11,7 @@ import {
   UseFormRegister,
 } from 'react-hook-form';
 
-import s from './styles.module.scss';
+import s from './Input.module.scss';
 
 export interface InputProps {
   name: string;
@@ -37,15 +38,13 @@ export const Input: FC<InputProps> = ({
 }) => {
   return (
     <div className={clsx(s.wrapper, className)}>
-      <label htmlFor={name} className={s.label}>
-        {label}
-        {required && <span className={s.required}>*</span>}
-      </label>
+      <Label label={label} required={!!required} inputName={name} />
       <input
         id={name}
         type={type}
         className={clsx(s.input, className, montserrat.className, {
           [s.error]: !!errors ? errors[name] : false,
+          [s.label]: label,
         })}
         placeholder={placeholder}
         {...register(name, { ...validationOptions })}

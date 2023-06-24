@@ -13,9 +13,19 @@ export const SignUpPage = () => {
   const [loading, setLoading] = useState(false);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    const { username, email, password } = data;
+    const { email, password } = data;
 
-    console.log(data);
+    console.log(email, password);
+
+    const res = await fetch('http://localhost:8080/sign-up', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const resJson = await res.json();
+
+    console.log(resJson);
 
     //
     // if (await login(username, password)) {

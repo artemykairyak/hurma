@@ -1,6 +1,5 @@
 import { Button } from '@components/shared/Button/Button';
 import { Input } from '@components/shared/Input/Input';
-import { ErrorMessage } from '@hookform/error-message';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { IInput } from '@types/types';
 import { FC } from 'react';
@@ -38,7 +37,7 @@ export const AuthForm: FC<AuthFormProps> = ({
       className={s.form}
       noValidate={true}
     >
-      <di>
+      <div>
         {inputs.map(({ placeholder, type, name, label }, i) => {
           return (
             <div className={s.inputWrapper} key={i}>
@@ -47,19 +46,12 @@ export const AuthForm: FC<AuthFormProps> = ({
                 name={name}
                 type={type}
                 register={register}
-                isError={!!errors[name]}
-              />
-              <ErrorMessage
                 errors={errors}
-                name={name}
-                render={(data) => (
-                  <span className={s.error}>{data.message}</span>
-                )}
               />
             </div>
           );
         })}
-      </di>
+      </div>
       <Button
         type="primary"
         className={s.button}

@@ -2,9 +2,9 @@ import { IInput } from '@types/types';
 
 export const signUpInputs: IInput[] = [
   {
-    name: 'username',
-    type: 'text',
-    label: 'username',
+    name: 'email',
+    type: 'email',
+    label: 'email',
   },
   {
     name: 'password',
@@ -20,9 +20,9 @@ export const signUpInputs: IInput[] = [
 
 export const signInInputs: IInput[] = [
   {
-    name: 'username',
-    type: 'text',
-    label: 'username',
+    name: 'email',
+    type: 'email',
+    label: 'email',
   },
   {
     name: 'password',

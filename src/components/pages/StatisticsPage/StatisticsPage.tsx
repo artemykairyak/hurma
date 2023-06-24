@@ -43,18 +43,16 @@ export const StatisticsPage = () => {
   return (
     <ContentLayout>
       <GrayPanel title="Statistics">
-        <div className={s.stats}>
-          <h2 className={s.mode}>{link ? link : 'All links'}</h2>
-          <div className={s.graph}>
-            <Chart data={data.data} />
-          </div>
-          <div>
-            <InputWithButton
-              inputProps={{ label: 'specific link', name: 'specificLink' }}
-              buttonProps={{ icon: StatsIcon }}
-              onSubmit={(data) => console.log(data)}
-            />
-          </div>
+        <h2 className={s.mode}>{link ? link : 'All links'}</h2>
+        <div className={s.graph}>
+          <Chart data={data.data} />
+        </div>
+        <div>
+          <InputWithButton
+            inputProps={{ label: 'specific link', name: 'specificLink' }}
+            buttonProps={{ icon: StatsIcon }}
+            onSubmit={(data) => console.log(data)}
+          />
         </div>
       </GrayPanel>
     </ContentLayout>

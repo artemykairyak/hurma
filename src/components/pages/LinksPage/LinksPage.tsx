@@ -94,6 +94,7 @@ export const LinksPage: FC<LinkPageProps> = ({ links }) => {
       <GrayPanel
         title="Links"
         className={clsx({ [s.panel]: total > DEFAULT_LIMIT })}
+        disableWhitePanel={true}
       >
         {loading ? (
           <Loader fullSize={true} />

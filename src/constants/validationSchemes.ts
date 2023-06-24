@@ -3,7 +3,6 @@ import * as yup from 'yup';
 
 export const signUpSchema = yup
   .object({
-    username: yup.string().required(ValidationMessages.REQUIRED),
     email: yup
       .string()
       .email(ValidationMessages.EMAIL)
@@ -22,7 +21,10 @@ export const signUpSchema = yup
 
 export const signInSchema = yup
   .object({
-    username: yup.string().required(ValidationMessages.REQUIRED),
+    email: yup
+      .string()
+      .email(ValidationMessages.EMAIL)
+      .required(ValidationMessages.REQUIRED),
     password: yup
       .string()
       .min(6, ValidationMessages.MIN_PASSWORD)
