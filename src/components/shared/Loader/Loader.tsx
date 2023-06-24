@@ -7,15 +7,20 @@ import s from './styles.module.scss';
 interface LoaderProps {
   fullSize?: boolean;
   size?: number;
+  color?: string;
 }
 
-export const Loader: FC<LoaderProps> = ({ size, fullSize }) => {
+export const Loader: FC<LoaderProps> = ({ size, fullSize, color }) => {
   const sizes = size ? { width: `${size}px`, height: `${size}px` } : {};
 
   if (fullSize) {
     return (
       <div className={s.wrapper}>
-        <ReactSVG src={LoaderIcon.src} className={s.loader} style={sizes} />
+        <ReactSVG
+          src={LoaderIcon.src}
+          className={s.loader}
+          style={{ color, ...sizes }}
+        />
       </div>
     );
   }

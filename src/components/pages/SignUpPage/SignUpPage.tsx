@@ -19,23 +19,12 @@ export const SignUpPage = () => {
 
     const res = await fetch('http://localhost:8080/sign-up', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
     });
 
     const resJson = await res.json();
 
     console.log(resJson);
-
-    //
-    // if (await login(username, password)) {
-    //   if (backLink) {
-    //     await router.replace(backLink);
-    //     return;
-    //   }
-    //
-    //   await router.replace(`/user/${username}`);
-    // }
   };
 
   return (

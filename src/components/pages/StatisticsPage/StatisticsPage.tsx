@@ -4,6 +4,7 @@ import StatsIcon from '@assets/icons/stats.svg';
 import { ContentLayout } from '@components/layouts/ContentLayout/ContentLayout';
 import { GrayPanel } from '@components/shared/GrayPanel/GrayPanel';
 import { InputWithButton } from '@components/shared/InputWithButton/InputWithButton';
+import { useAppSession } from '@hooks/useAppSession';
 import dayjs from 'dayjs';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
@@ -39,9 +40,10 @@ console.log(dayjs('2023-06-27T22:24:09Z').format('MMM DD, YYYY'));
 
 export const StatisticsPage = () => {
   const [link, setLink] = useState('');
+  const { loading } = useAppSession();
 
   return (
-    <ContentLayout>
+    <ContentLayout loading={loading}>
       <GrayPanel title="Statistics">
         <h2 className={s.mode}>{link ? link : 'All links'}</h2>
         <div className={s.graph}>

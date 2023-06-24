@@ -6,12 +6,14 @@ import { GrayPanel } from '@components/shared/GrayPanel/GrayPanel';
 import { InputWithButton } from '@components/shared/InputWithButton/InputWithButton';
 import { Label } from '@components/shared/Label/Label';
 import { Switch } from '@components/shared/Switch/Switch';
+import { useAppSession } from '@hooks/useAppSession';
 import { useState } from 'react';
 
 import s from './ProfilePage.module.scss';
 
-export const ProfilePage = () => {
+export const ProfilePage = async () => {
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const { loading } = useAppSession();
 
   const onTelegramCodeConfirm = ({
     telegramCode,
@@ -22,7 +24,7 @@ export const ProfilePage = () => {
   };
 
   return (
-    <ContentLayout>
+    <ContentLayout loading={loading}>
       <GrayPanel title="Profile">
         <div>
           <div className={s.subscribe}>
@@ -33,7 +35,6 @@ export const ProfilePage = () => {
               name="isSubscribed"
             />
           </div>
-
           <InputWithButton
             inputProps={{
               label:

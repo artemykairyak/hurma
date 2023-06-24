@@ -6,6 +6,7 @@ import '@styles/normalize.css';
 import { SessionProvider } from 'next-auth/react';
 import { Montserrat_Alternates } from 'next/font/google';
 import { ReactNode } from 'react';
+import { CookiesProvider } from 'react-cookie';
 
 export const montserrat = Montserrat_Alternates({
   weight: ['400', '500', '600', '700'],
@@ -28,11 +29,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <SessionProvider session={session}>
-        <body className={montserrat.className}>
-          <MainLayout>{children}</MainLayout>
-        </body>
-      </SessionProvider>
+      <CookiesProvider>
+        <SessionProvider session={session}>
+          <body className={montserrat.className}>
+            <MainLayout>{children}</MainLayout>
+          </body>
+        </SessionProvider>
+      </CookiesProvider>
     </html>
   );
 }

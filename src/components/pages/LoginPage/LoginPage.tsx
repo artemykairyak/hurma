@@ -23,11 +23,15 @@ export const LoginPage = () => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const { email, password } = data;
 
-    const res = await signIn('credentials', {
-      email,
-      password,
-      redirect: false,
-    });
+    const res = await signIn(
+      'credentials',
+      {
+        email,
+        password,
+        redirect: false,
+      },
+      {},
+    );
     console.log(res);
     // if (await login(username, password)) {
     //   if (backLink) {

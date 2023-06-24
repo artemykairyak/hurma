@@ -10,6 +10,7 @@ import { Pagination } from '@components/shared/Pagination/Pagination';
 import { HeaderItem, Table } from '@components/shared/Table/Table';
 import { Tooltip } from '@components/shared/Tooltip/Tooltip';
 import { DEFAULT_LIMIT } from '@constants/constants';
+import { useAppSession } from '@hooks/useAppSession';
 import clsx from 'clsx';
 import { FC, MouseEvent, useMemo, useState } from 'react';
 
@@ -28,6 +29,9 @@ export const LinksPage: FC<LinkPageProps> = ({ links }) => {
   const [typeModalShowed, setTypeModalShowed] = useState<
     'create' | 'edit' | null
   >(null);
+  const {
+    loading: { appLoading },
+  } = useAppSession();
 
   const copyLink = async (link: string, e?: MouseEvent) => {
     if (e) {
@@ -90,7 +94,7 @@ export const LinksPage: FC<LinkPageProps> = ({ links }) => {
   };
 
   return (
-    <ContentLayout>
+    <ContentLayout loading={appLoading}>
       <GrayPanel
         title="Links"
         className={clsx({ [s.panel]: total > DEFAULT_LIMIT })}

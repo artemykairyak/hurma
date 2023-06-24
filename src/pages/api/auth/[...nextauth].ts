@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { instance } from '@services/apiServices';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
@@ -13,22 +13,14 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials, req) {
         const { email, password } = credentials;
 
-        const res = await axios.post(
-          'http://localhost:8080/login',
-          {
-            email,
-            password,
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          },
-        );
+        const res = await instance.post('/login', { email, password });
+        console.log(res);
 
-        console.log(res.data);
+        if (res.data.accessToken) {
+          return res.data;
+        }
 
-        return res.data;
+        return null;
       },
     }),
   ],
@@ -38,6 +30,21 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: '/login',
     signUp: '/sign-up',
+  },
+  callbacks: {
+    jwt: ({ token, user }) => {
+      if (user) {
+        token.token = user.accessToken;
+      }
+      return token;
+    },
+    session: ({ session, token }) => {
+      if (token) {
+        session.user.token = token.token;
+      }
+
+      return session;
+    },
   },
 };
 
