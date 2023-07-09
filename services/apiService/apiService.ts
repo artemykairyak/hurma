@@ -1,0 +1,31 @@
+import axios, { AxiosResponse } from "axios";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:8080";
+
+const params = {
+  baseURL: basePath,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  withCredentials: true,
+};
+
+export const instance = axios.create({
+  ...params,
+});
+
+export const handleResponse = async <T>(
+  res: Promise<AxiosResponse<T>>
+): Promise<[T | null, string | null]> => {
+  try {
+    const result = await res;
+    console.log("res", result);
+
+    return [result.data, null];
+  } catch (error) {
+    console.log(error);
+    const errObj =
+      error?.response?.data.message || "Something wrong. Try again.";
+    return [null, errObj];
+  }
+};
