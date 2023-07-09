@@ -52,7 +52,7 @@ export const AuthForm: FC<AuthFormProps> = ({
         })}
       </div>
       <Button
-        type="primary"
+        kind="primary"
         className={s.button}
         loading={!!loading}
         disabled={!!loading}

@@ -22,7 +22,7 @@ export interface LinksResponse {
   total: 0;
 }
 
-type EditLink = Pick<CreateLink, "title" | "expiresAt">;
+export type EditLink = Pick<CreateLink, "title" | "expiresAt">;
 
 export const getLinks = async (
   page: number = 1,
@@ -42,9 +42,13 @@ export const createLink = async (
   );
 };
 
-export const editLink = async (data: EditLink, config?: AxiosRequestConfig) => {
+export const editLink = async (
+  linkId: string,
+  data: EditLink,
+  config?: AxiosRequestConfig
+) => {
   return await handleResponse<BaseResponse>(
-    instance.patch("/links", data, { ...config })
+    instance.patch(`/links/${linkId}`, data, { ...config })
   );
 };
 

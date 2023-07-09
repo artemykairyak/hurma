@@ -16,9 +16,12 @@ export const SignUpPage = () => {
 
     setLoading(true);
 
-    const res = await signUp(email, password);
+    const [_, error] = await signUp(email, password);
 
-    console.log(res);
+    if (error) {
+      setErrors(error.message);
+    }
+
     setLoading(false);
   };
 

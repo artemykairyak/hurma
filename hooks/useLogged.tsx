@@ -1,19 +1,24 @@
+import { Routes } from "@enums/routes";
 import { getCookie } from "@utils/utils";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export const useLogged = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const [logged, setLogged] = useState(false);
 
   useEffect(() => {
     if (getCookie("hurmaLogged")) {
       setLogged(true);
-      router.push("/links");
+      if (pathname === Routes.Login || pathname === Routes.SignUp) {
+        router.replace(Routes.Links);
+      }
+
       return;
     }
 
-    router.replace("/login");
+    router.replace(Routes.Login);
   }, []);
 
   return logged;

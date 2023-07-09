@@ -1,5 +1,11 @@
 @import '@styles/vars.module.scss';
 
+.email {
+  font-weight: 500;
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
 .subscribe {
   display: flex;
   align-items: center;

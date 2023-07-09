@@ -48,6 +48,7 @@ const Ceil: FC<{
   width?: string | undefined;
   className?: string | undefined;
 }> = ({ data, className, width }) => {
+  console.log(222, data);
   return (
     <div className={className} style={{ width }}>
       {data}

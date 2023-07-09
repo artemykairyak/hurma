@@ -4,6 +4,7 @@ import { HeadingWithOption } from "@components/shared/HeadingWithOption/HeadingW
 import { signInInputs } from "@constants/inputs";
 import { signInSchema } from "@constants/validationSchemes";
 import { login } from "@services/apiService/endpoints/authApi";
+import dayjs from "dayjs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
@@ -22,10 +23,13 @@ export const LoginPage = () => {
     const [resData, error] = await login(email, password);
 
     if (resData?.code === 200) {
-      document.cookie = "hurmaLogged=true";
+      document.cookie = `hurmaLogged=true; Path=/; Expires=${dayjs().add(
+        1,
+        "hour"
+      )};`;
       await router.push("/links");
     } else {
-      setErrors(error);
+      setErrors(error.message);
     }
 
     setLoading(false);

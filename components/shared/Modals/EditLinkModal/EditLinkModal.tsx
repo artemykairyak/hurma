@@ -9,15 +9,25 @@ import { editLinkSchema } from "@constants/validationSchemes";
 import { ModalProps } from "@customTypes/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ILink } from "@pages/links";
+import { EditLink } from "@services/apiService/endpoints/linksApi";
 import clsx from "clsx";
 import { FC } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 
 interface EditLinkModalProps extends ModalProps {
   link: ILink;
+  onEdit: (id: string, data: EditLink) => void;
+  onDelete: (id: string) => void;
+  error: string;
 }
 
-export const EditLinkModal: FC<EditLinkModalProps> = ({ onClose, link }) => {
+export const EditLinkModal: FC<EditLinkModalProps> = ({
+  onClose,
+  link,
+  onEdit,
+  onDelete,
+  error,
+}) => {
   const {
     register,
     handleSubmit,
@@ -25,20 +35,12 @@ export const EditLinkModal: FC<EditLinkModalProps> = ({ onClose, link }) => {
   } = useForm<FieldValues>({
     defaultValues: {
       title: link.title,
-      expires: link.expires.expires_at,
+      expires: link.expiresAt,
     },
     //@ts-ignore
 
     resolver: yupResolver(editLinkSchema),
   });
-
-  const onSubmit = (data: any) => {
-    console.log(data);
-  };
-
-  const onDelete = () => {
-    console.log(link.id);
-  };
 
   return (
     <Modal title="Edit link" onClose={onClose}>
@@ -53,19 +55,20 @@ export const EditLinkModal: FC<EditLinkModalProps> = ({ onClose, link }) => {
           />
         );
       })}
+      <span className={gs.error}>{error}</span>
       <div className={s.buttons}>
         <Button
-          type="primary"
+          kind="primary"
           className={s.button}
-          onClick={handleSubmit(onSubmit)}
+          onClick={handleSubmit((data: EditLink) => onEdit(link.id, data))}
         >
           edit
         </Button>
         <Button
-          type="primary"
+          kind="primary"
           className={clsx(s.button, s.deleteBtn)}
           icon={DeleteIcon}
-          onClick={onDelete}
+          onClick={() => onDelete(link.id)}
         />
       </div>
     </Modal>

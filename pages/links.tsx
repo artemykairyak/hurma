@@ -6,16 +6,8 @@ import { GetServerSideProps } from "next";
 export interface ILink {
   id: string;
   title: string;
-  short_url: string;
-  full_url: string;
-  expires: {
-    created_at: string;
-    expires_at: string;
-  };
-  clicks: {
-    daily: number[];
-    total: number;
-  };
+  shortUrl: string;
+  expiresAt: string;
 }
 
 export interface LinkPageProps {

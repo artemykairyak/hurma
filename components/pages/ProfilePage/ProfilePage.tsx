@@ -5,10 +5,18 @@ import { GrayPanel } from "@components/shared/GrayPanel/GrayPanel";
 import { InputWithButton } from "@components/shared/InputWithButton/InputWithButton";
 import { Label } from "@components/shared/Label/Label";
 import { Switch } from "@components/shared/Switch/Switch";
-import { useState } from "react";
+import { useHandleError } from "@hooks/useHandleError";
+import { ProfileProps } from "@pages/profile";
+import {
+  subscribe,
+  unsubscribe,
+} from "@services/apiService/endpoints/profileApi";
+import { FC, useEffect, useState } from "react";
 
-export const ProfilePage = () => {
-  const [isSubscribed, setIsSubscribed] = useState(false);
+export const ProfilePage: FC<ProfileProps> = ({ profile }) => {
+  const handleError = useHandleError();
+  const [isSubscribed, setIsSubscribed] = useState(profile.subscription);
+  const [errors, setErrors] = useState("");
 
   const onTelegramCodeConfirm = ({
     telegramCode,
@@ -18,10 +26,31 @@ export const ProfilePage = () => {
     console.log(telegramCode);
   };
 
+  const handleSubscription = async (value: boolean) => {
+    if (value) {
+      const [_, error] = await subscribe();
+
+      if (error) {
+        setErrors(handleError(error));
+      }
+    } else {
+      const [_, error] = await unsubscribe();
+
+      if (error) {
+        setErrors(handleError(error));
+      }
+    }
+  };
+
+  useEffect(() => {
+    handleSubscription(isSubscribed);
+  }, [isSubscribed]);
+
   return (
     <ContentLayout loading={false}>
       <GrayPanel title="Profile">
         <div>
+          <h2 className={s.email}>{profile.email}</h2>
           <div className={s.subscribe}>
             <Label label="email for daily updates" />
             <Switch

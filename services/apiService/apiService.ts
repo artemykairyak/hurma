@@ -1,3 +1,4 @@
+import { BaseResponse } from "@services/apiService/types";
 import axios, { AxiosResponse } from "axios";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:8080";
@@ -16,7 +17,7 @@ export const instance = axios.create({
 
 export const handleResponse = async <T>(
   res: Promise<AxiosResponse<T>>
-): Promise<[T | null, string | null]> => {
+): Promise<[T | null, BaseResponse | null]> => {
   try {
     const result = await res;
     console.log("res", result);
@@ -24,8 +25,11 @@ export const handleResponse = async <T>(
     return [result.data, null];
   } catch (error) {
     console.log(error);
-    const errObj =
-      error?.response?.data.message || "Something wrong. Try again.";
+    const _error = error.response?.data;
+    const errObj: BaseResponse = { ..._error } || {
+      code: 400,
+      message: "Something wrong. Try again.",
+    };
     return [null, errObj];
   }
 };

@@ -13,11 +13,13 @@ import { FieldValues, useForm } from "react-hook-form";
 
 interface CreateLinkModalProps extends ModalProps {
   onCreate: (data: Omit<CreateLink, "createdAt">) => void;
+  error: string;
 }
 
 export const CreateLinkModal: FC<CreateLinkModalProps> = ({
   onClose,
   onCreate,
+  error,
 }) => {
   const {
     register,
@@ -43,6 +45,7 @@ export const CreateLinkModal: FC<CreateLinkModalProps> = ({
             />
           );
         })}
+        <span className={gs.error}>{error}</span>
         <Button kind="primary" type="submit" className={s.button}>
           create
         </Button>
